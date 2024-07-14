@@ -6,6 +6,10 @@
     --color-tertiary: #886799;
     --color-accent: #db8dcd;
     --color-light: #fddaf7;
+    --icon-size: 15rem;
+    --name-font-size: 3em;
+    --desc-font-size: 2em;
+    --font-size: 1.35em;
 }
 
 ::-webkit-scrollbar {
@@ -40,11 +44,11 @@ html,body {
     overflow-y: scroll;
 }
 p {
-    font-size: 1.35em;
+    font-size: var(--font-size);
 }
 .icon {
-    width: 15rem;
-    height: 15rem;
+    width: var(--icon-size);
+    height: var(--icon-size);
     background-image: url(twemojiontop.png);
     background-position: center;
     background-size: contain;
@@ -55,13 +59,13 @@ p {
     display: inline-block;
     top: 0;
     position: absolute;
-    font-size: 3em;
+    font-size: var(--name-font-size);
 }
 .desc {
     top: 2em;
     position: absolute;
     display: inline-block;
-    font-size: 2em;
+    font-size: var(--desc-font-size);
 }
 .inner {
     padding: 1em;
@@ -90,6 +94,14 @@ p {
     }
     .right {
         width: 90vw;
+    }
+}
+@media (max-width: 1000px) {
+    :root {
+        --icon-size: 10rem;
+        --name-font-size: 2.25em;
+        --desc-font-size: 1.5em;
+        --font-size: 1em;
     }
 }
 .social {
