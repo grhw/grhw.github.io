@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+
+:root {
+    --color-primary: #292f4d;
+    --color-secondary: #534970;
+    --color-tertiary: #886799;
+    --color-accent: #db8dcd;
+    --color-light: #fddaf7;
+}
+
+::-webkit-scrollbar {
+    background-color: transparent;
+    width: 0.5em;
+}
+::-webkit-scrollbar-thumb {
+    background-color: var(--color-tertiary);
+    border-radius: 0.1em;
+}
+
+* {
+    font-family: 'Noto Sans', sans-serif;
+    color: var(--color-light);
+}
+
+html,body {
+    background-color: var(--color-secondary) !important;
+    overflow: hidden;
+    margin: 0;
+}
+
+.bg {
+    width: calc(100vw - 2rem);
+    height: calc(100vh - 2rem);
+    background-color: var(--color-primary);
+    left: 50vw;
+    top: 50vh;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    overflow: hidden;
+    overflow-y: scroll;
+}
+p {
+    font-size: 1.35em;
+}
+.icon {
+    width: 15rem;
+    height: 15rem;
+    background-image: url(twemojiontop.png);
+    background-position: center;
+    background-size: contain;
+    display: inline-block;
+}
+.name {
+    width: 20em;
+    display: inline-block;
+    top: 0;
+    position: absolute;
+    font-size: 3em;
+}
+.desc {
+    top: 2em;
+    position: absolute;
+    display: inline-block;
+    font-size: 2em;
+}
+.inner {
+    padding: 1em;
+    display: flex;
+}
+
+.left {
+    min-width: 500px;
+    width: 55vw;
+    display: inline-block;
+    position: relative;
+}
+.right {
+    top: 5em;
+    display: inline-block;
+    position: relative;
+    height: 50vh;
+    width: 40vw;
+}
+@media (max-width: 1500px) {
+    .inner {
+        display: block;
+    }
+    .left {
+        width: 90vw;
+    }
+    .right {
+        width: 90vw;
+    }
+}
+.social {
+    text-align: right;
+}
+a {
+    text-decoration: none;
+    color: var(--color-accent);
+}
+b {
+    color: var(--color-accent);
+}
+i {
+    color: var(--color-accent);
+}
