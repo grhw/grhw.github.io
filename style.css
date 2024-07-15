@@ -26,6 +26,24 @@
     color: var(--color-light);
 }
 
+br {
+    opacity: 0;
+    user-select: none;
+}
+::selection {
+    background-color: var(--color-tertiary) !important;
+}
+
+i::selection, b::selection {
+    background-color: var(--color-secondary) !important;
+}
+
+a::selection {
+    background-color: var(--color-light) !important;
+}
+
+
+
 html,body {
     background-color: var(--color-secondary) !important;
     overflow: hidden;
@@ -56,9 +74,13 @@ p {
     background-position: center;
     background-size: contain;
     display: inline-block;
+    transition: transform 1s;
+}
+.icon:hover {
+    transform: rotate(40deg);
 }
 .name {
-    width: 20em;
+    width: 40vw;
     display: inline-block;
     top: 0;
     position: absolute;
@@ -69,6 +91,7 @@ p {
     position: absolute;
     display: inline-block;
     font-size: var(--desc-font-size);
+    width: 60vw;
 }
 .inner {
     padding: 1em;
@@ -85,8 +108,16 @@ p {
     top: 5em;
     display: inline-block;
     position: relative;
-    height: 50vh;
+    height: 75vh;
     width: 40vw;
+    padding-left: 0.5em;
+}
+@media (max-width: 1700px) {
+    @media (min-width: 1600px) {
+        .right {
+            border-left: var(--color-secondary) solid 1px;
+        }
+    }
 }
 @media (max-width: 1600px) {
     .right {
@@ -100,8 +131,14 @@ p {
     .left {
         width: 90vw;
     }
+    .name {
+        width: 74vw;
+    }
     .right {
         width: 90vw;
+    }
+    .jump {
+        display: none;
     }
 }
 @media (max-width: 1000px) {
@@ -113,7 +150,7 @@ p {
     }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 500px) {
     :root {
         --icon-size: 5rem;
         --name-font-size: 1.25em;
@@ -124,13 +161,72 @@ p {
 .social {
     text-align: right;
 }
+table {
+    font-size: var(--font-size);   
+}
 a {
     text-decoration: none;
     color: var(--color-accent);
+}
+a:hover {
+    text-decoration: underline;
 }
 b {
     color: var(--color-accent);
 }
 i {
     color: var(--color-accent);
+}
+h1 {
+    border-bottom: var(--color-secondary) solid 1px;
+}
+@keyframes jump {
+    0% {
+        background-image: url("jump/j2000.png");    
+        opacity: 100;
+    }
+    32% {
+        background-image: url("jump/j2001.png");    
+    }
+    48% {
+        background-image: url("jump/j2002.png");
+    }
+    64% {
+        background-image: url("jump/j2003.png");
+    }
+    80% {
+        background-image: url("jump/j2004.png");
+        transform: translateY(0%);
+    }
+    96% {
+        background-image: url("jump/j2005.png");
+        opacity: 100;
+    }
+    99% {
+        opacity: 100;
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+}
+
+.jump {
+    filter: invert(100%) sepia(100%) saturate(2000%) hue-rotate(150deg) saturate(50%);
+    background-image: url("jump/j2000.png");
+    background-size: contain;
+    background-position: center;
+    height: 20em;
+    aspect-ratio: 1.777;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+}
+.jump:hover {
+    opacity: 0;
+    animation-name: jump;
+    animation-play-state:running;
+    animation-duration: 0.3s;
+    animation-iteration-count: 1;
 }
