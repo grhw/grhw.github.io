@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" style="background-color: black; text-align:center;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Strings</title>
+    <style>
+        * {
+            font-family:'Courier New', Courier, monospace;
+            color: gray;
+        }
+        .match {
+            color: whitesmoke;
+            background-color: rgba(255, 255, 255, 0.401);
+            padding: 5px;
+            margin: 5px;
+            display: inline-block;
+            border-radius: 5px;
+            word-wrap: break-word;
+            max-width: 90%;
+        }
+        div {
+            margin-top: 25px;
+            border-radius: 15px;
+            border: gray solid 1px;
+            padding: 10px;
+            width: 90%;
+            display: inline-block;
+        }
+        textarea {
+            background-color: transparent; 
+            border-radius: 15px; 
+            width: 90%; 
+            resize:none;
+            outline: none;
+        }
+        button {
+            background-color: transparent;
+            border: solid gray 1px;
+            border-radius: 15px; 
+            padding: 15px;
+        }
+        .color {
+            color: aqua
+        }
+    </style>
+</head>
+<body>
+    <!--Yes, i know, no external css.. I put this up at 4am, don't blame me.-->
+    <h1>String finder</h1>
+    <h4>Originally made because I wanted to see all the quotes in some obfuscated code.</h4>
+    <h4>Paste below!</h4>
+    <textarea rows="15"></textarea>
+    <br>
+    <button>Generate!</button>
+    <h4>Results</h4>
+    <div>
+    </div>
+
+    <script>
+        const regex = /"([^"\n]*)"/gm; // who uses ' anyway
+        function update(text) {
+            let m;
+            var final = [];
+
+            console.log(text)
+            while ((m = regex.exec(text)) !== null) {
+                if (m.index === regex.lastIndex) {
+                    regex.lastIndex++;
+                }            
+                const f = m[0]
+                if (final.indexOf(f) == -1) {
+                    final.push(f)
+                }
+            }
+            var inner = ""
+            let i = 0;
+
+            final.sort((a, b) => b.length - a.length);
+
+
+            final.forEach((e)=>{
+                i++
+                inner += `<span class="match"><span class="color">${i} </span>${e}</span>`
+            })
+            document.querySelector("div").innerHTML = inner
+        }
+
+        document.querySelector("button").onclick = ()=>{
+            update(document.querySelector("textarea").value)
+        }
+    </script>
+</body>
+</html>
