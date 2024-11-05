@@ -79,6 +79,61 @@ p {
 .icon:hover {
     transform: rotate(40deg);
 }
+
+@keyframes blow {
+    0% {
+        transform: rotate(40deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.icon.clicked {
+    animation-name: blow;
+    animation-duration: 1s;
+    transform: rotate(0deg);
+}
+@keyframes fly_away {
+    0% {
+        opacity: 1;
+        transform: rotate(0deg);
+    }
+    5% {
+        transform: rotate(2deg);
+    }
+    10% {
+        transform: rotate(-2deg);
+    }
+    15% {
+        transform: rotate(2deg);
+    }
+    100% {
+        transform: rotate(-15deg) translateX(100vw);
+        opacity: 1;
+    }
+}
+
+@keyframes fade_in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.will_fly.flying {
+    animation-name: fly_away;
+    animation-duration: 5s;
+    animation-timing-function:ease-out;
+    opacity: 0;
+}
+.will_fly {
+    animation-name: fade_in;
+    animation-duration: 1s;
+}
+
 .name {
     width: 40vw;
     display: inline-block;
